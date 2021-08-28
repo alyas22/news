@@ -1,0 +1,90 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "no-empty": ["warn"],
+        "no-unused-vars": ["warn"],
+        "quotes":["warn", "single"],
+        "no-magic-numbers":"warn",
+        "camelcase":"warn",
+        "spaced-comment": "warn",
+        "complexity": ["warn", { "max": 10 }],
+        "react/jsx-key": "warn",
+        "jsx-a11y/label-has-for": "off",
+        "no-lonely-if":"warn",
+        "object-shorthand": ["warn", "always"],
+        "guard-for-in":"warn",
+        "prefer-template":"warn",
+        "lines-between-class-members":"warn",
+        "no-nested-ternary":"warn",
+        "react/forbid-prop-types": 1,
+        "react/prop-types": 1,
+        "react/jsx-boolean-value":["warn"],
+        "react/button-has-type":"warn",
+        "dot-notation":"warn",
+        "no-var":"warn",
+        "react/destructuring-assignment": "warn",
+        "no-use-before-define": ["warn", { "functions": true, "classes": true }],
+        "arrow-body-style": ["warn", "as-needed"],
+        "no-unneeded-ternary":"warn",
+        "no-else-return":"warn",
+        "react/jsx-curly-brace-presence":"warn",
+        "react/jsx-fragments":"warn",
+        "react/self-closing-comp":"warn",
+        "react/no-did-update-set-state":"warn",
+        "react/sort-comp":"warn",
+        "react/state-in-constructor":"warn",
+        "no-restricted-syntax": [1,
+            "ForInStatement",
+            "LabeledStatement",
+            "WithStatement"
+          ],
+        "no-shadow": [
+            "warn",
+            {
+              "hoist": "all",
+              "allow": ["resolve", "reject", "done", "next", "err", "error"]
+            }
+          ],
+          "prefer-const": [
+            "warn",
+            {
+              "destructuring": "all"
+            }
+          ],
+        "prettier/prettier": [
+            "warn",
+            {
+                "printWidth": 150, 
+                "tabWidth": 2,
+                "semi": true,
+                "singleQuote": true,
+                "bracketSpacing":true,
+                "jsxBracketSameLine":true, 
+                "useTabs": false,
+                "endOfLine":"auto",
+                "arrowParens":"avoid",
+                "const":false
+            }
+          ]   
+    }
+}

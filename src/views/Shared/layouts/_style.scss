@@ -1,0 +1,39 @@
+@import "../../../theme/varaibles.scss";
+
+.site-header{
+  margin: 0 0 0.5px;
+  padding: 29px 40px 29px 40px;
+  box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  @media #{$tablet} {
+    padding: 10px !important;
+  }
+ .site-name{
+    font-size: 2.5rem;
+    float: left;
+    text-align: left;
+    a {
+        text-decoration: none;
+        color: $main;
+    }
+ }
+ .site-menu{
+    text-align: left;
+    padding-top: 20px;
+    a {
+        text-decoration: none;
+        color: $main;
+        &.active {
+            color: $brand;
+        }
+    }
+ }
+}
+.site-footer {
+    padding: 1em 0 0 0;
+  
+    p {
+      color: $breadcrumbs;
+      font-size: 1.2rem;
+    }
+  }

@@ -1,0 +1,25 @@
+// Styling varaibles that can be imported and used anywhere in the app
+
+$brand: #0d6efd;
+$main: #000;
+$labels: #3a3a41;
+$breadcrumbs: #9ba1a4;
+$border: #9ba1a4;
+$secondary: #6199eb;
+$tertiary: #9ba1a4;
+$radius: 15px;
+$smallRadius: 7.5px;
+$tabs: #eaeaea;
+
+//Responsive Variables
+$lg-desktop: "only screen and (min-width: 1200px)";
+$desktop: "only screen and (max-width: 992px)";
+$tablet: "only screen and (max-width: 768px)";
+$tabletUp: "only screen and (min-width: 768px)";
+$mobileUp: "only screen and (min-width: 576px)";
+$mobile: "only screen and (max-width: 576px)";
+
+$mobile-width: 576px;
+$tablet-width: 768px;
+$desktop-width: 992px;
+$largedesktop-width: 1200px;
