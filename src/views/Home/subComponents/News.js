@@ -60,7 +60,7 @@ export default function News() {
     <>
       <SearchNews searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword} onSubmitData={onSearchSubmit} />
       <div className="row col-md-12   mx-5">
-        <h3>Results: {searchKeyword}</h3>
+        <h3>Results for: {searchKeyword}</h3>
       </div>
       {newsData?.map((news, index) => (
         <div className="card m-5" key={index}>

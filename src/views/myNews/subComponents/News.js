@@ -14,7 +14,8 @@ export default function News() {
   const dispatch = useDispatch();
   const user = localStorage.getItem('user');
   const parseUser = JSON.parse(user);
-  const news = useSelector(state => state.saveAndDeleteNews);
+  const seavedNews = useSelector(state => state.saveAndDeleteNews).news;
+  const myNews = seavedNews.filter(news1 => news1.userid === parseUser.id);
 
   function handleDetailsShow(breakpoint) {
     if (breakpoint) {
@@ -30,7 +31,7 @@ export default function News() {
   }
   useEffect(() => {
     dispatch(newsActions.getMyNews());
-    setNewsData(news.news);
+    setNewsData(myNews);
   }, []);
 
   return (
