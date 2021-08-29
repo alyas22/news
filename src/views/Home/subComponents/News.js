@@ -5,6 +5,8 @@ import isoDateConverter from '../../../helper/isoDateConverter';
 import { Modal } from 'react-bootstrap';
 import Pagination from 'react-js-pagination';
 import { newsActions } from '../../../actions/news';
+import { useForm, Controller } from 'react-hook-form';
+import SearchNews from './searchNews';
 import '../_style.scss';
 
 export default function News() {
@@ -14,10 +16,10 @@ export default function News() {
   const [pageNumber, setPageNumber] = useState(1);
   const [totalResults, setTotalResults] = useState(null);
   const [pageSize] = useState(10);
+  const [searchKeyword, setSearchKeyword] = useState('food');
   const dispatch = useDispatch();
   const user = localStorage.getItem('user');
   const parseUser = JSON.parse(user);
-
   function handleDetailsShow(breakpoint) {
     if (breakpoint) {
       setShow(true);
@@ -25,8 +27,8 @@ export default function News() {
     }
   }
 
-  function getNewsData(pageSize, pageNumber) {
-    getNews(pageSize, pageNumber)
+  function getNewsData(pageSize, pageNumber, searchKeyword) {
+    getNews(pageSize, pageNumber, searchKeyword)
       .then(res => {
         setNewsData(res.data.articles);
         setTotalResults(res.data.totalResults);
@@ -37,21 +39,29 @@ export default function News() {
   }
   function handlePageChange(pageNum) {
     setPageNumber(pageNum);
-    getNewsData(pageSize, pageNum);
+    getNewsData(pageSize, pageNum, searchKeyword);
   }
   function handleAddNews(news) {
     if (news) {
-      console.log(news);
-      console.log(parseUser.id);
       dispatch(newsActions.save({ userid: parseUser.id, ...news }));
     }
   }
+  function onSearchSubmit(searchKeyword) {
+    setPageNumber(1);
+    setSearchKeyword(searchKeyword);
+    getNewsData(pageSize, pageNumber, searchKeyword);
+  }
+
   useEffect(() => {
-    getNewsData(pageSize, pageNumber);
+    getNewsData(pageSize, pageNumber, searchKeyword);
   }, []);
 
   return (
     <>
+      <SearchNews searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword} onSubmitData={onSearchSubmit} />
+      <div className="row col-md-12   mx-5">
+        <h3>Results: {searchKeyword}</h3>
+      </div>
       {newsData?.map((news, index) => (
         <div className="card m-5" key={index}>
           <div className="card-header">

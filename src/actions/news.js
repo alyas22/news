@@ -98,6 +98,7 @@ function _delete(news) {
       news1 => {
         dispatch(success(news1));
         alert('Deleted Successfuly!');
+        location.reload(true);
       },
       error => {
         dispatch(failure(error));

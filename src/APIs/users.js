@@ -4,7 +4,6 @@ export const userService = {
   login,
   logout,
   register,
-  getById,
 };
 
 function login(email, password) {
@@ -23,17 +22,7 @@ function login(email, password) {
 }
 
 function logout() {
-  // remove user from local storage to log user out
   localStorage.removeItem('user');
-}
-
-function getById(id) {
-  const requestOptions = {
-    method: 'GET',
-    headers: auth(),
-  };
-
-  return fetch(`/users/${id}`, requestOptions).then(handleResponse);
 }
 
 function register(user) {
@@ -51,7 +40,6 @@ function handleResponse(response) {
     const data = text && JSON.parse(text);
     if (!response.ok) {
       if (response.status === 401) {
-        // auto logout if 401 response returned from api
         logout();
         location.reload(true);
       }

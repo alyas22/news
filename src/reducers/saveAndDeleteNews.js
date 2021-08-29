@@ -6,13 +6,19 @@ export const newsConstants = {
 const news = JSON.parse(localStorage.getItem('news'));
 const initialState = news ? { saving: true, news } : {};
 
-export function saveNews(state = initialState, action) {
+export function saveAndDeleteNews(state = initialState, action) {
   switch (action.type) {
     case newsConstants.SAVE_REQUEST:
       return { saving: true };
     case newsConstants.SAVE_SUCCESS:
       return {};
     case newsConstants.SAVE_FAILURE:
+      return {};
+    case newsConstants.DELETE_REQUEST:
+      return { saving: true };
+    case newsConstants.DELETE_SUCCESS:
+      return {};
+    case newsConstants.DELETE_FAILURE:
       return {};
     default:
       return state;

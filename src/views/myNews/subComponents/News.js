@@ -14,7 +14,7 @@ export default function News() {
   const dispatch = useDispatch();
   const user = localStorage.getItem('user');
   const parseUser = JSON.parse(user);
-  const news = useSelector(state => state.saveNews);
+  const news = useSelector(state => state.saveAndDeleteNews);
 
   function handleDetailsShow(breakpoint) {
     if (breakpoint) {
@@ -35,28 +35,36 @@ export default function News() {
 
   return (
     <>
-      {newsData?.map((news, index) => (
-        <div className="card m-5" key={index}>
-          <div className="card-header">
-            <div>
-              {news.title}{' '}
-              {parseUser && (
-                <a className="add-news" onClick={() => handleDeleteNews(news)}>
-                  Remove
-                </a>
-              )}
+      {newsData?.length ? (
+        newsData?.map((news, index) => (
+          <div className="card m-5" key={index}>
+            <div className="card-header">
+              <div>
+                {news.title}{' '}
+                {parseUser && (
+                  <a className="add-news" onClick={() => handleDeleteNews(news)}>
+                    Remove
+                  </a>
+                )}
+              </div>
+            </div>
+            <div className="card-body">
+              <p className="card-text">{news.description}</p>
+              <div className="d-flex justify-content-end">
+                <button type="button" className="btn btn-primary" onClick={() => handleDetailsShow(news)}>
+                  Details
+                </button>
+              </div>
             </div>
           </div>
-          <div className="card-body">
-            <p className="card-text">{news.description}</p>
-            <div className="d-flex justify-content-end">
-              <button type="button" className="btn btn-primary" onClick={() => handleDetailsShow(news)}>
-                Details
-              </button>
-            </div>
+        ))
+      ) : (
+        <div className="card m-5">
+          <div className="card-body p-5">
+            <p className="card-text d-flex justify-content-center">No Articals!</p>
           </div>
         </div>
-      ))}
+      )}
 
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header>

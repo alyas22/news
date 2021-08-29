@@ -6,8 +6,8 @@ const qInTitle = 'food';
 const language = 'en';
 const apiKey = 'e2a9823c97b741b7aba38c9936779498';
 
-export function getNews(pageSize, page) {
-  return axios.get(`${endPointApiUrl}?qInTitle=${qInTitle}&language=${language}&pageSize=${pageSize}&page=${page}&apiKey=${apiKey}`);
+export function getNews(pageSize, page, searchKeyword) {
+  return axios.get(`${endPointApiUrl}?qInTitle=${searchKeyword}&language=${language}&pageSize=${pageSize}&page=${page}&apiKey=${apiKey}`);
 }
 
 export const newsService = {
@@ -23,7 +23,7 @@ function saveNews(news) {
     body: JSON.stringify(news),
   };
 
-  return fetch('/news/save', requestOptions).then(handleResponse);
+  return fetch('/news/save', requestOptions);
 }
 
 function getMyNews() {
@@ -32,25 +32,15 @@ function getMyNews() {
     headers: auth(),
   };
 
-  return fetch('/myNews', requestOptions).then(handleResponse);
+  return fetch('/myNews', requestOptions);
 }
 
 function deleteNews(news) {
   const requestOptions = {
     method: 'DELETE',
     headers: auth(),
+    body: JSON.stringify(news),
   };
 
-  return fetch('/news/delete', requestOptions).then(handleResponse);
-}
-
-function handleResponse(response) {
-  return response.text().then(text => {
-    const data = text && JSON.parse(text);
-    if (!response.ok) {
-      const error = (data && data.message) || response.statusText;
-      return Promise.reject(error);
-    }
-    return data;
-  });
+  return fetch('/news/delete', requestOptions);
 }
