@@ -1,7 +1,8 @@
 /* eslint-disable complexity */
 const users = JSON.parse(localStorage.getItem('users')) || [];
+const userNews = JSON.parse(localStorage.getItem('news')) || [];
 
-export function configureFakeUserBackend() {
+export function configureFakeBackend() {
   const realFetch = window.fetch;
   window.fetch = function (url, opts) {
     return new Promise((resolve, reject) => {
@@ -46,19 +47,7 @@ export function configureFakeUserBackend() {
           resolve({ ok: true, text: () => Promise.resolve() });
           return;
         }
-        realFetch(url, opts).then(response => resolve(response));
-      }, 500);
-    });
-  };
-}
-
-const userNews = JSON.parse(localStorage.getItem('news')) || [];
-
-export function configureFakeUserNewsBackend() {
-  const realFetch = window.fetch;
-  window.fetch = function (url, opts) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
+        // save news
         if (url.endsWith('/news/save') && opts.method === 'POST') {
           const news = JSON.parse(opts.body);
           // validation

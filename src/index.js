@@ -10,9 +10,8 @@ import { createLogger } from 'redux-logger';
 import rootReducer from './reducers';
 import App from './App.js';
 // setup fake backend
-import { configureFakeUserBackend, configureFakeUserNewsBackend } from './helper/fakeBackend';
-configureFakeUserBackend();
-configureFakeUserNewsBackend();
+import { configureFakeBackend } from './helper/fakeBackend';
+configureFakeBackend();
 const loggerMiddleware = createLogger();
 export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, loggerMiddleware));
 
