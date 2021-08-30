@@ -5,7 +5,6 @@ import isoDateConverter from '../../../helper/isoDateConverter';
 import { Modal } from 'react-bootstrap';
 import Pagination from 'react-js-pagination';
 import { newsActions } from '../../../actions/news';
-import { useForm, Controller } from 'react-hook-form';
 import SearchNews from './searchNews';
 import '../_style.scss';
 
@@ -58,7 +57,7 @@ export default function News() {
 
   return (
     <>
-      <SearchNews searchKeyword={searchKeyword} setSearchKeyword={setSearchKeyword} onSubmitData={onSearchSubmit} />
+      <SearchNews onSubmitData={onSearchSubmit} />
       <div className="row col-md-12   mx-5">
         <h3>Results for: {searchKeyword}</h3>
       </div>
@@ -66,7 +65,7 @@ export default function News() {
         <div className="card m-5" key={index}>
           <div className="card-header">
             <div>
-              {news.title}{' '}
+              {news.title}
               {parseUser && (
                 <a className="add-news" onClick={() => handleAddNews(news)}>
                   Add to my list
@@ -105,7 +104,7 @@ export default function News() {
           <b>{newsDetailsData?.title} </b>
           <br />
           <br />
-          {newsDetailsData?.content}{' '}
+          {newsDetailsData?.content}
           <a href={newsDetailsData?.url} target="_blank" rel="noreferrer">
             see the full artical
           </a>

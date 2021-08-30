@@ -5,11 +5,11 @@ import Header from '../../header';
 import Footer from '../../footer';
 
 export default function Home(props) {
-  const { children } = props;
+  const { children, title } = props;
   return (
     <>
       <Helmet>
-        <title>الصفحة الرئيسية</title>
+        <title>{title}</title>
       </Helmet>
 
       <div className="outer-container">

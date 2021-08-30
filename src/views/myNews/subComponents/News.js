@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getNews } from '../../../APIs/news';
 import isoDateConverter from '../../../helper/isoDateConverter';
 import { Modal } from 'react-bootstrap';
-import Pagination from 'react-js-pagination';
 import { newsActions } from '../../../actions/news';
 import '../_style.scss';
 

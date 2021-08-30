@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import RegisterAndLogin from '../Shared/layouts/RegisterAndLogin';
-import { getNews } from '../../APIs/news';
 import 'react-datepicker/dist/react-datepicker.css';
-import DatePicker from 'react-datepicker';
 import { userActions } from '../../actions/user';
 
 export default function Login() {
@@ -12,7 +10,6 @@ export default function Login() {
     register,
     handleSubmit,
     formState: { errors },
-    control,
   } = useForm();
 
   const dispatch = useDispatch();

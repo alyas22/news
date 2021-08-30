@@ -15,7 +15,7 @@ export default function searchNews(props) {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { searchKeyword, setSearchKeyword, onSubmitData } = props;
+  const { onSubmitData } = props;
   const onSubmit = data => {
     if (data) {
       onSubmitData(data.searchNews);

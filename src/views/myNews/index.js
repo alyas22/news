@@ -5,7 +5,7 @@ import News from './subComponents/news';
 export default function MyNews() {
   return (
     <HomeLayout>
-      <News />
+      <News title="My List" />
     </HomeLayout>
   );
 }

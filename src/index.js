@@ -1,6 +1,3 @@
-import 'bootstrap/scss/bootstrap.scss';
-import './views/Shared/_style.scss';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -9,6 +6,8 @@ import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import rootReducer from './reducers';
 import App from './App.js';
+import 'bootstrap/scss/bootstrap.scss';
+import './views/Shared/_style.scss';
 // setup fake backend
 import { configureFakeBackend } from './helper/fakeBackend';
 configureFakeBackend();
