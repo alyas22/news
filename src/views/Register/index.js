@@ -58,8 +58,14 @@ export default function Register() {
                   National ID
                   <label className="star">*</label>
                 </label>
-                <input className="form-control" placeholder="National ID" maxLength="10" {...register('nationalid', { required: true })} />
+                <input
+                  className="form-control"
+                  placeholder="National ID"
+                  maxLength="10"
+                  {...register('nationalid', { required: true, minLength: 10 })}
+                />
                 {errors?.nationalid && errors?.nationalid.type === 'required' && <p className="error">This field is required</p>}
+                {errors?.nationalid && errors?.nationalid.type === 'minLength' && <p className="error">The National ID must be 10 digits</p>}
               </div>
             </div>
             <div className="col-md-12">
